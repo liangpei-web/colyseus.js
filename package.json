@@ -60,7 +60,7 @@
   "dependencies": {
     "@colyseus/httpie": "^2.0.0",
     "@colyseus/msgpackr": "^1.11.2",
-    "@colyseus/schema": "^3.0.0",
+    "@colyseus/schema": "^3.0.76",
     "tslib": "^2.1.0",
     "ws": "^8.13.0"
   },

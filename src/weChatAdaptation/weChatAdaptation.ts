@@ -33,10 +33,13 @@ if (window['wx']) {
 
     // 复制原型链和静态属性
     AdaptedWebSocket.prototype = OriginalWebSocket.prototype;
-    AdaptedWebSocket.CONNECTING = OriginalWebSocket.CONNECTING;
-    AdaptedWebSocket.OPEN = OriginalWebSocket.OPEN;
-    AdaptedWebSocket.CLOSING = OriginalWebSocket.CLOSING;
-    AdaptedWebSocket.CLOSED = OriginalWebSocket.CLOSED;
+    
+    // 动态复制所有静态属性和方法（包括 CONNECTING, OPEN, CLOSING, CLOSED 等）
+    for (const key in OriginalWebSocket) {
+        if (OriginalWebSocket.hasOwnProperty(key)) {
+            AdaptedWebSocket[key] = OriginalWebSocket[key];
+        }
+    }
 
     // 替换全局 WebSocket
     (globalThis as any).WebSocket = AdaptedWebSocket;
